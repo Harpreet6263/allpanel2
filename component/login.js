@@ -20,7 +20,7 @@ const Login = () => {
 
       localStorage.setItem("token", token);
 
-      window.location.href = "/external-site"; // redirect to Puppeteer view
+      window.location.href = "/redirect"; // redirect to Puppeteer view
     } catch (err) {
       console.error(err);
       setError(err.response?.data?.message || "Login failed");

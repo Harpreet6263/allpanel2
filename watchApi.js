@@ -2,6 +2,8 @@ const axios = require("axios");
 const puppeteer = require("puppeteer");
 
 (async () => {
+  console.log("entering watchApi.js");
+  
   const browser = await puppeteer.launch({ headless: false, defaultViewport: null });
   const page = await browser.newPage();
 
@@ -24,6 +26,21 @@ const puppeteer = require("puppeteer");
       } catch (err) {
         console.error("❌ Error sending payload to backend:", err.message);
       }
+    }
+    if (req.url().includes("/api/front/userdata") && req.method() === "POST") {
+      console.log("here");
+      
+      const headers = req.headers();
+      const cookies = headers['cookie'];
+      console.log("🔥 Intercepted POST payload:", cookies);
+      // try {
+      //   await axios.post("http://localhost:4000/api/receive-bet", {
+      //     data: postData
+      //   });
+      //   console.log("📨 Sent payload to backend successfully");
+      // } catch (err) {
+      //   console.error("❌ Error sending payload to backend:", err.message);
+      // }
     }
     req.continue();
   });
