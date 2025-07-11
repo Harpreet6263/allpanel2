@@ -11,14 +11,14 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/api/user/signin", {
-        name,
-        password,
-      });
+      // const res = await axios.post("http://localhost:5000/api/user/signin", {
+      //   name,
+      //   password,
+      // });
 
-      const { token } = res.data.data;
+      // const { token } = res.data.data;
 
-      localStorage.setItem("token", token);
+      // localStorage.setItem("token", token);
 
       window.location.href = "/redirect"; // redirect to Puppeteer view
     } catch (err) {
